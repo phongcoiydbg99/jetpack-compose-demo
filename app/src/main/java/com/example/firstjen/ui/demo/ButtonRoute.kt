@@ -2,6 +2,8 @@ package com.example.firstjen.ui.demo
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,8 +52,8 @@ fun ButtonScreen(navigate: (JenRoute) -> Unit) {
             textStyle = TrpTheme.typography.trpTextStyleSub1,
             iconStart = {
                 Icon(
-                    painter = painterResource(id = R.drawable.trp_flight_ic_baggage),
                     contentDescription = null,
+                    imageVector = Icons.Filled.Favorite,
                     tint = TrpColor.white
                 )
             }
@@ -63,6 +65,7 @@ fun ButtonScreen(navigate: (JenRoute) -> Unit) {
             buttonStyle = TrpButtonStyle.Default
         )
         TrpButton(
+            modifier = Modifier.padding(16.dp),
             onClick = { navigate.invoke(JenRoute.FLight) },
             text = stringResource(id = R.string.flight),
             buttonType = TrpButtonType.Primary,

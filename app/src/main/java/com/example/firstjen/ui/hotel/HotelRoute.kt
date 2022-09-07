@@ -18,6 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.firstjen.navigation.JenAppState
 import com.example.firstjen.navigation.JenRoute
+import com.example.firstjen.ui.common.theme.TrpColor
 import com.example.firstjen.ui.common.theme.TrpTheme
 import com.example.firstjen.ui.common.ui.*
 
@@ -63,6 +64,9 @@ fun HotelRoute(state: JenAppState) {
 @Composable
 fun HotelScreen(state: JenAppState) {
     val context = LocalContext.current
+    val openDialog = remember { mutableStateOf(false) }
+    var open by remember { mutableStateOf<Boolean>(false) }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -82,99 +86,52 @@ fun HotelScreen(state: JenAppState) {
             buttonType = TrpButtonType.Primary,
             buttonStyle = TrpButtonStyle.Outline
         )
-        Alert()
-        var check by remember { mutableStateOf<Boolean>(false) }
-        Checkbox(checked = check, onCheckedChange = { check = it })
-        IconToggleButton(checked = check, onCheckedChange = {
-            check = it
-        }) {
-            // on below line we are creating a
-            // variable for our transition
-            val transition = updateTransition(check, label = "")
+        TrpButton(
+            onClick = { open = true },
+            text = "Alert",
+            buttonType = TrpButtonType.Primary,
+            buttonStyle = TrpButtonStyle.Outline
+        )
 
-            // on below line we are creating a variable for
-            // color of our icon
-            val tint by transition.animateColor(label = "iconColor") { isChecked ->
-                // if toggle button is checked we are setting color as red.
-                // in else condition we are setting color as black
-                if (isChecked) Color.Green else Color.Black
-            }
+        TrpButton(
+            onClick = { openDialog.value = true },
+            text = "Alert ",
+            buttonType = TrpButtonType.Primary,
+            buttonStyle = TrpButtonStyle.Outline
+        )
 
-            // om below line we are specifying transition
-            val size by transition.animateDp(
-                transitionSpec = {
-                    // on below line we are specifying transition
-                    if (false isTransitioningTo true) {
-                        // on below line we are specifying key frames
-                        keyframes {
-                            // on below line we are specifying animation duration
-                            durationMillis = 250
-                            // on below line we are specifying animations.
-                            30.dp at 0 with LinearOutSlowInEasing // for 0-15 ms
-                            35.dp at 15 with FastOutLinearInEasing // for 15-75 ms
-                            90.dp at 75 // ms
-                            35.dp at 150 // ms
-                        }
-                    } else {
-                        spring(stiffness = Spring.StiffnessVeryLow)
-                    }
-                },
-                label = "Size"
-            ) { 30.dp }
 
-            // on below line we are creating icon for our toggle button.
-            Icon(
-                // on below line we are specifying icon for our image vector.
-                imageVector = if (check) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
-                contentDescription = "Icon",
-                // on below line we are specifying
-                // tint for our icon.
-                tint = tint,
-                // on below line we are specifying
-                // size for our icon.
-                modifier = Modifier.size(size)
-            )
-        }
-    }
-}
+        TrpAlert(openDialog = open, onDismissRequest = { open = false }, title = "Alert", text = "500 Bros", confirm = "Ok", dismiss = "Cancel", backgroundColor = TrpColor.pink)
 
-@Composable
-fun Alert() {
-    Column {
-        val openDialog = remember { mutableStateOf(false) }
-        Button(onClick = {
-            openDialog.value = true
-        }) {
-            Text("Click me")
-        }
-        if (openDialog.value) {
-            AlertDialog(
-                onDismissRequest = {
-                    openDialog.value = false
-                },
-                title = {
-                    Text(text = "Dialog Title")
-                },
-                text = {
-                    Text("Here is a text ")
-                },
-                confirmButton = {
-                    Button(
-                        onClick = {
-                            openDialog.value = false
-                        }) {
-                        Text("This is the Confirm Button")
-                    }
-                },
-                dismissButton = {
-                    Button(
-                        onClick = {
-                            openDialog.value = false
-                        }) {
-                        Text("This is the dismiss Button")
-                    }
+        TrpAlert(
+            openDialog = openDialog.value,
+            modifier = Modifier,
+            onDismissRequest = { openDialog.value = false },
+            title = {
+                TrpText(text = "Alert", style = TrpTheme.typography.trpTextStyleH1)
+            },
+            content = {
+                TrpText(text = "500 bros")
+            },
+            buttons = {
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    TrpButton(
+                        modifier = Modifier.weight(1f),
+                        onClick = { openDialog.value = false },
+                        text = "Cancel",
+                        buttonType = TrpButtonType.Primary,
+                        buttonStyle = TrpButtonStyle.Text
+                    )
+                    TrpButton(
+                        modifier = Modifier.weight(1f),
+                        onClick = { openDialog.value = false },
+                        text = "Ok",
+                        buttonType = TrpButtonType.Primary,
+                        buttonStyle = TrpButtonStyle.Text
+                    )
                 }
-            )
-        }
+            }
+        )
     }
 }
+
