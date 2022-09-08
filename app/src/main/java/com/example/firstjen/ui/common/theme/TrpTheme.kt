@@ -8,42 +8,32 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.font.FontFamily
-import com.example.firstjen.ui.theme.*
-
-private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
-)
-
-private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-)
+import com.example.firstjen.ui.common.theme.TrpColors.Companion.toMaterialColors
 
 private val LocalTrpTypography = staticCompositionLocalOf<TrpTypography> {
-    error("Wrap you content with TrpTheme {} to get access to Backpack typography")
+    error("Wrap you content with TrpTheme {} to get access to typography")
 }
+private val LocalTrpColors = staticCompositionLocalOf<TrpColors> {
+    error("Wrap you content with TrpTheme {} to get access to colors")
+}
+
 
 @Composable
 fun TrpTheme(
+    theme: BaseTheme,
     fontFamily: FontFamily = TrpFontFamily,
     content: @Composable () -> Unit,
 ) {
     val typography = TrpTypography(defaultFontFamily = fontFamily)
-    val colors = if (isSystemInDarkTheme()) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
+    val colors = theme.toTrpColors()
 
     CompositionLocalProvider(
         LocalTrpTypography provides typography,
+        LocalTrpColors provides colors,
         LocalElevationOverlay provides null,
     ) {
         MaterialTheme(
-            colors = colors,
+            colors = theme.toColors(),
             typography = typography.toMaterialTypography(fontFamily),
             shapes = TrpShapes,
         ) {
@@ -65,9 +55,9 @@ object TrpTheme {
             LocalTrpTypography.current
         }
 
-    val colors: Colors
+    val colors: TrpColors
         @Composable
-        get() = MaterialTheme.colors
+        get() = LocalTrpColors.current
 
     val shapes: Shapes
         @Composable
@@ -99,3 +89,19 @@ fun TrpTypography.toMaterialTypography(fontFamily: FontFamily): Typography =
         caption = trpTextStyleCaption,
         overline = trpTextStyleOverline,
     )
+
+open class BaseTheme() {
+
+    @Composable
+    fun toColors(): Colors = toTrpColors().toMaterialColors()
+
+    @Composable
+    fun toTrpColors(): TrpColors = if (isSystemInDarkTheme())
+        toDarkColors()
+    else
+        toLightColors()
+
+    open fun toLightColors() = TrpColors.toLightColors()
+
+    open fun toDarkColors() = TrpColors.toDartColors()
+}

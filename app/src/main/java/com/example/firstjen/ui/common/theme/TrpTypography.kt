@@ -6,7 +6,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 
 @Immutable
-data class TrpTypography internal constructor(
+class TrpTypography internal constructor(
     val trpTextStyleH1: TextStyle,
     val trpTextStyleH2: TextStyle,
     val trpTextStyleH3: TextStyle,

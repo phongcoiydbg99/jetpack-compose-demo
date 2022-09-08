@@ -1,5 +1,6 @@
 package com.example.firstjen.ui.hotel
 
+import androidx.activity.ComponentActivity
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.clickable
@@ -25,6 +26,7 @@ import com.example.firstjen.ui.common.ui.*
 
 @Composable
 fun HotelRoute(state: JenAppState) {
+    val activity = (LocalContext.current as? ComponentActivity)
     Scaffold(
         topBar = {
             TopAppBar() {
@@ -32,7 +34,7 @@ fun HotelRoute(state: JenAppState) {
                     modifier = Modifier
                         .padding(8.dp)
                         .clickable {
-                            state.navigateUp()
+                            activity?.finish()
                         },
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = "Icon",
@@ -117,7 +119,7 @@ fun HotelScreen(state: JenAppState) {
             text = "500 Bros",
             confirm = "Ok",
             dismiss = "Cancel",
-            backgroundColor = TrpColor.pink
+            backgroundColor = TrpTheme.colors.primary
         )
 
         TrpAlert(
@@ -192,6 +194,9 @@ fun HotelScreen(state: JenAppState) {
             },
             shape = TrpTheme.shapes.small,
         )
+
+        Checkbox(checked = true, onCheckedChange = {})
+        Checkbox(checked = false, onCheckedChange = {})
     }
 }
 

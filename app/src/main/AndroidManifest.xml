@@ -25,6 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.mytour.MytourActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FirstJen"/>
+        <activity android:name=".ui.partner.PartnerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FirstJen"/>
+        <activity android:name=".CommonActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FirstJen"/>
     </application>
 
 </manifest>
