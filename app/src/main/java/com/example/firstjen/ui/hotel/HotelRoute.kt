@@ -77,7 +77,6 @@ fun HotelScreen(state: JenAppState) {
             .fillMaxHeight()
             .padding(vertical = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
     ) {
         TrpButton(
             onClick = { state.navigate(JenRoute.Text) },
