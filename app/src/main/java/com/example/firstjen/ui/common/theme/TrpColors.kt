@@ -19,7 +19,7 @@ class TrpColors(
     val isLight: Boolean
 ) {
     companion object {
-        fun toLightColors(
+        fun lightColors(
             primary: Color = Color(0xFF6200EE),
             primaryVariant: Color = Color(0xFF3700B3),
             secondary: Color = Color(0xFF03DAC6),
@@ -48,7 +48,7 @@ class TrpColors(
             true
         )
 
-        fun toDartColors(
+        fun dartColors(
             primary: Color = Color(0xFFBB86FC),
             primaryVariant: Color = Color(0xFF3700B3),
             secondary: Color = Color(0xFF03DAC6),

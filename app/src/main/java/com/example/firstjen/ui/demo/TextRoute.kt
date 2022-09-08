@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -29,7 +31,9 @@ import com.example.firstjen.ui.common.ui.TrpText
 
 @Composable
 fun TextRoute(state: JenAppState) {
-    Surface {
+    Surface(
+        modifier = Modifier.verticalScroll(rememberScrollState())
+    ) {
         TextScreen(state::navigate)
     }
 }

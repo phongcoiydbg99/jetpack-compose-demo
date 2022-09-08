@@ -1,9 +1,9 @@
 package com.example.firstjen.ui.common.theme
 
+import androidx.compose.material.Typography
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 
 @Immutable
 class TrpTypography internal constructor(
@@ -19,93 +19,42 @@ class TrpTypography internal constructor(
     val trpTextStyleBody2: TextStyle,
     val trpTextStyleButton: TextStyle,
     val trpTextStyleCaption: TextStyle,
-    val trpTextStyleOverline: TextStyle
+    val trpTextStyleOverline: TextStyle,
 ) {
-    internal constructor(
-        defaultFontFamily: FontFamily = TrpFontFamily,
-        trpTextStyleH1: TextStyle = TextStyle(
-            fontSize = TrpFontSize.h1,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleH2: TextStyle = TextStyle(
-            fontSize = TrpFontSize.h2,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleH3: TextStyle = TextStyle(
-            fontSize = TrpFontSize.h3,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleH4: TextStyle = TextStyle(
-            fontSize = TrpFontSize.h4,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleH5: TextStyle = TextStyle(
-            fontSize = TrpFontSize.h5,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleH6: TextStyle = TextStyle(
-            fontSize = TrpFontSize.h6,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleSub1: TextStyle = TextStyle(
-            fontSize = TrpFontSize.sub1,
-            fontWeight = FontWeight.SemiBold,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleSub2: TextStyle = TextStyle(
-            fontSize = TrpFontSize.sub2,
-            fontWeight = FontWeight.SemiBold,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleBody1: TextStyle = TextStyle(
-            fontSize = TrpFontSize.body1,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleBody2: TextStyle = TextStyle(
-            fontSize = TrpFontSize.body2,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleButton: TextStyle = TextStyle(
-            fontSize = TrpFontSize.button,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleCaption: TextStyle = TextStyle(
-            fontSize = TrpFontSize.caption,
-            fontWeight = FontWeight.Light,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-        trpTextStyleOverline: TextStyle = TextStyle(
-            fontSize = TrpFontSize.overline,
-            fontWeight = FontWeight.Light,
-            letterSpacing = TrpLetterSpacing.default
-        ),
-    ) : this(
-        trpTextStyleH1 = trpTextStyleH1.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleH2 = trpTextStyleH2.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleH3 = trpTextStyleH3.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleH4 = trpTextStyleH4.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleH5 = trpTextStyleH5.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleH6 = trpTextStyleH6.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleSub1 = trpTextStyleSub1.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleSub2 = trpTextStyleSub2.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleBody1 = trpTextStyleBody1.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleBody2 = trpTextStyleBody2.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleCaption = trpTextStyleCaption.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleButton = trpTextStyleButton.withTrpFontFamily(defaultFontFamily),
-        trpTextStyleOverline = trpTextStyleOverline.withTrpFontFamily(defaultFontFamily),
 
+    internal constructor(
+        textStyle: TrpTextStyle = TrpTextStyle(),
+    ) : this(
+        trpTextStyleH1 = textStyle.trpTextStyleH1,
+        trpTextStyleH2 = textStyle.trpTextStyleH2,
+        trpTextStyleH3 = textStyle.trpTextStyleH3,
+        trpTextStyleH4 = textStyle.trpTextStyleH4,
+        trpTextStyleH5 = textStyle.trpTextStyleH5,
+        trpTextStyleH6 = textStyle.trpTextStyleH6,
+        trpTextStyleSub1 = textStyle.trpTextStyleSub1,
+        trpTextStyleSub2 = textStyle.trpTextStyleSub2,
+        trpTextStyleBody1 = textStyle.trpTextStyleBody1,
+        trpTextStyleBody2 = textStyle.trpTextStyleBody2,
+        trpTextStyleCaption = textStyle.trpTextStyleCaption,
+        trpTextStyleButton = textStyle.trpTextStyleButton,
+        trpTextStyleOverline = textStyle.trpTextStyleOverline,
     )
 }
 
-private fun TextStyle.withTrpFontFamily(default: FontFamily): TextStyle {
-    return if (fontFamily != null) this else copy(fontFamily = default)
-}
+fun TrpTypography.toMaterialTypography(fontFamily: FontFamily): Typography =
+    Typography(
+        defaultFontFamily = fontFamily,
+        h1 = trpTextStyleH1,
+        h2 = trpTextStyleH2,
+        h3 = trpTextStyleH3,
+        h4 = trpTextStyleH4,
+        h5 = trpTextStyleH5,
+        h6 = trpTextStyleH6,
+        subtitle1 = trpTextStyleSub1,
+        subtitle2 = trpTextStyleSub2,
+        body1 = trpTextStyleBody1,
+        body2 = trpTextStyleBody2,
+        button = trpTextStyleButton,
+        caption = trpTextStyleCaption,
+        overline = trpTextStyleOverline,
+    )

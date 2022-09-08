@@ -6,4 +6,5 @@ import androidx.compose.ui.unit.sp
 
 internal object TrpLetterSpacing {
     internal val default: TextUnit = -(0.02).em
+    internal val medium: TextUnit = 0.em
 }

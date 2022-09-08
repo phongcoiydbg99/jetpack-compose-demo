@@ -6,7 +6,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.font.FontFamily
 import com.example.firstjen.ui.common.theme.TrpColors.Companion.toMaterialColors
 
@@ -21,11 +20,10 @@ private val LocalTrpColors = staticCompositionLocalOf<TrpColors> {
 @Composable
 fun TrpTheme(
     theme: BaseTheme,
-    fontFamily: FontFamily = TrpFontFamily,
     content: @Composable () -> Unit,
 ) {
-    val typography = TrpTypography(defaultFontFamily = fontFamily)
-    val colors = theme.toTrpColors()
+    val typography = theme.trpTypography()
+    val colors = theme.trpColors()
 
     CompositionLocalProvider(
         LocalTrpTypography provides typography,
@@ -33,8 +31,8 @@ fun TrpTheme(
         LocalElevationOverlay provides null,
     ) {
         MaterialTheme(
-            colors = theme.toColors(),
-            typography = typography.toMaterialTypography(fontFamily),
+            colors = theme.colors(),
+            typography = theme.typography(),
             shapes = TrpShapes,
         ) {
             CompositionLocalProvider(
@@ -49,11 +47,7 @@ object TrpTheme {
 
     val typography: TrpTypography
         @Composable
-        get() = if (LocalInspectionMode.current) {
-            TrpTypography(defaultFontFamily = FontFamily.SansSerif)
-        } else {
-            LocalTrpTypography.current
-        }
+        get() = LocalTrpTypography.current
 
     val colors: TrpColors
         @Composable
@@ -72,36 +66,31 @@ val TrpShapes: Shapes =
         large = RoundedCornerShape(TrpBorderRadius.`16dp`),
     )
 
-fun TrpTypography.toMaterialTypography(fontFamily: FontFamily): Typography =
-    Typography(
-        defaultFontFamily = fontFamily,
-        h1 = trpTextStyleH1,
-        h2 = trpTextStyleH2,
-        h3 = trpTextStyleH3,
-        h4 = trpTextStyleH4,
-        h5 = trpTextStyleH5,
-        h6 = trpTextStyleH6,
-        subtitle1 = trpTextStyleSub1,
-        subtitle2 = trpTextStyleSub2,
-        body1 = trpTextStyleBody1,
-        body2 = trpTextStyleBody2,
-        button = trpTextStyleButton,
-        caption = trpTextStyleCaption,
-        overline = trpTextStyleOverline,
-    )
+open class BaseTheme {
 
-open class BaseTheme() {
+    open val lightColors = TrpColors.lightColors()
+
+    open val darkColors = TrpColors.dartColors()
+
+    open val fontFamily : FontFamily
+        get() = TrpFontFamily
+
+    open val fontSize : TrpFontSize
+        get() = TrpFontSize()
+
+    open val textStyle : TrpTextStyle
+        get() = TrpTextStyle(fontFamily, fontSize)
 
     @Composable
-    fun toColors(): Colors = toTrpColors().toMaterialColors()
+    fun colors(): Colors = trpColors().toMaterialColors()
 
     @Composable
-    fun toTrpColors(): TrpColors = if (isSystemInDarkTheme())
-        toDarkColors()
+    fun trpColors(): TrpColors = if (isSystemInDarkTheme())
+        darkColors
     else
-        toLightColors()
+        lightColors
 
-    open fun toLightColors() = TrpColors.toLightColors()
+    fun typography(): Typography = trpTypography().toMaterialTypography(fontFamily)
 
-    open fun toDarkColors() = TrpColors.toDartColors()
+    fun trpTypography() = TrpTypography(textStyle)
 }
