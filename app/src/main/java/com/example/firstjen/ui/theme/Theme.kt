@@ -54,9 +54,9 @@ class MytourTheme : BaseTheme() {
     )
 
     override fun toDarkColors() = TrpColors.toDartColors(
-        primary = Color(0xFF6200EE),
-        primaryVariant = Color(0xFF3700B3),
-        secondary = Color(0xFF03DAC6),
+        primary = Color(0xFF831A34),
+        primaryVariant = Color(0xFF9B2744),
+        secondary = Color(0xFF693C15),
     )
 }
 
@@ -68,8 +68,8 @@ class PartnerTheme : BaseTheme() {
     )
 
     override fun toDarkColors() = TrpColors.toDartColors(
-        primary = Color(0xFF6200EE),
-        primaryVariant = Color(0xFF3700B3),
-        secondary = Color(0xFFFF3366),
+        primary = Color(0xFF2E6940),
+        primaryVariant = Color(0xFF3B7A4F),
+        secondary = Color(0xFFA32041),
     )
 }
