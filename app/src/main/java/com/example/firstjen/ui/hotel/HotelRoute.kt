@@ -3,13 +3,13 @@ package com.example.firstjen.ui.hotel
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -66,6 +66,8 @@ fun HotelScreen(state: JenAppState) {
     val context = LocalContext.current
     val openDialog = remember { mutableStateOf(false) }
     var open by remember { mutableStateOf<Boolean>(false) }
+    var text by remember { mutableStateOf<String>("") }
+    var error by remember { mutableStateOf<Boolean>(false) }
 
     Column(
         modifier = Modifier
@@ -87,21 +89,36 @@ fun HotelScreen(state: JenAppState) {
             buttonStyle = TrpButtonStyle.Outline
         )
         TrpButton(
-            onClick = { open = true },
+            onClick = {
+                open = true
+                error = !error
+            },
             text = "Alert",
             buttonType = TrpButtonType.Primary,
             buttonStyle = TrpButtonStyle.Outline
         )
 
         TrpButton(
-            onClick = { openDialog.value = true },
+            onClick = {
+                openDialog.value = true
+            },
             text = "Alert ",
             buttonType = TrpButtonType.Primary,
             buttonStyle = TrpButtonStyle.Outline
         )
 
 
-        TrpAlert(openDialog = open, onDismissRequest = { open = false }, title = "Alert", text = "500 Bros", confirm = "Ok", dismiss = "Cancel", backgroundColor = TrpColor.pink)
+        TrpAlert(
+            openDialog = open,
+            onDismissRequest = {
+                open = false
+            },
+            title = "Alert",
+            text = "500 Bros",
+            confirm = "Ok",
+            dismiss = "Cancel",
+            backgroundColor = TrpColor.pink
+        )
 
         TrpAlert(
             openDialog = openDialog.value,
@@ -131,6 +148,49 @@ fun HotelScreen(state: JenAppState) {
                     )
                 }
             }
+        )
+
+        TextField(value = text, modifier = Modifier.padding(8.dp), onValueChange = {
+            text = it
+        }, isError = error, leadingIcon = {
+            Icon(
+                imageVector = Icons.Filled.Favorite,
+                contentDescription = "Icon",
+                modifier = Modifier.clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = rememberRipple(bounded = false), // You can also change the color and radius of the ripple
+                    onClick = {
+                        open = true
+                    }
+                )
+            )
+        }, placeholder = {
+            TrpText(text = "500 bros")
+        }, trailingIcon = {
+            Icon(
+                imageVector = Icons.Filled.Add,
+                contentDescription = "Icon",
+            )
+        }, colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = TrpTheme.colors.surface
+        ) )
+
+        OutlinedTextField(
+            value = text, modifier = Modifier.padding(8.dp),
+            onValueChange = {
+                text = it
+            },
+            isError = true,
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Filled.Favorite,
+                    contentDescription = "Icon",
+                )
+            },
+            placeholder = {
+                TrpText(text = "500 bros")
+            },
+            shape = TrpTheme.shapes.small,
         )
     }
 }
