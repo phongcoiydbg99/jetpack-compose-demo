@@ -9,10 +9,15 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.font.FontFamily
 import com.example.firstjen.ui.common.theme.TrpColors.Companion.toMaterialColors
 
-private val LocalTrpTypography = staticCompositionLocalOf<TrpTypography> {
+private val LocalTrpTypography = staticCompositionLocalOf<TrpTypography>() {
     error("Wrap you content with TrpTheme {} to get access to typography")
 }
+
 private val LocalTrpColors = staticCompositionLocalOf<TrpColors> {
+    error("Wrap you content with TrpTheme {} to get access to colors")
+}
+
+private val LocalTrpShapes = staticCompositionLocalOf<TrpShapes> {
     error("Wrap you content with TrpTheme {} to get access to colors")
 }
 
@@ -28,12 +33,13 @@ fun TrpTheme(
     CompositionLocalProvider(
         LocalTrpTypography provides typography,
         LocalTrpColors provides colors,
+        LocalTrpShapes provides trpShapes,
         LocalElevationOverlay provides null,
     ) {
         MaterialTheme(
             colors = theme.colors(),
             typography = theme.typography(),
-            shapes = TrpShapes,
+            shapes = trpShapes.toShapes(),
         ) {
             CompositionLocalProvider(
                 LocalContentAlpha provides 1f,
@@ -53,14 +59,14 @@ object TrpTheme {
         @Composable
         get() = LocalTrpColors.current
 
-    val shapes: Shapes
+    val shapes: TrpShapes
         @Composable
-        get() = MaterialTheme.shapes
+        get() = LocalTrpShapes.current
 
 }
 
-val TrpShapes: Shapes =
-    Shapes(
+val trpShapes: TrpShapes =
+    TrpShapes(
         small = RoundedCornerShape(TrpBorderRadius.`8dp`),
         medium = RoundedCornerShape(TrpBorderRadius.`12dp`),
         large = RoundedCornerShape(TrpBorderRadius.`16dp`),

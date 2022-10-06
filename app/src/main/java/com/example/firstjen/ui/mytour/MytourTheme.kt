@@ -28,4 +28,5 @@ class MytourTheme : BaseTheme() {
         primaryVariant = Color(0xFF9B2744),
         secondary = Color(0xFF693C15),
     )
+
 }

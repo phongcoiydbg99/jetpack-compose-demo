@@ -8,10 +8,7 @@ import com.example.firstjen.ui.common.theme.TrpFontSize
 import com.example.firstjen.ui.common.theme.TrpLetterSpacing
 import com.example.firstjen.ui.common.theme.TrpTextStyle
 
-class MytourTextStyle(
-    fontFamily: FontFamily,
-    fontSize: MytourFontSize
-) : TrpTextStyle(fontFamily, fontSize) {
+class MytourTextStyle(fontFamily: FontFamily, fontSize: MytourFontSize) : TrpTextStyle(fontFamily, fontSize) {
 
     override val trpTextStyleH1: TextStyle = TextStyle(
         fontFamily = fontFamily,
