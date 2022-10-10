@@ -8,8 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.firstjen.ui.common.theme.TrpTheme
-import com.example.firstjen.ui.common.theme.BaseTheme
+import com.example.firstjet.common.theme.TrpTheme
+import com.example.firstjet.common.theme.BaseTheme
 import com.example.firstjen.ui.demo.ButtonRoute
 import com.example.firstjen.ui.demo.TextRoute
 import com.example.firstjen.ui.flight.FlightRoute

@@ -3,6 +3,16 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+
+        maven {
+            url 'https://maven.pkg.github.com/phongcoiydbg99/jetpack-compose-demo'
+            credentials {
+                username = "phongcoiydbg99"
+                password = "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"
+            }
+        }
+
+        maven { url "https://jitpack.io" }
     }
 }
 dependencyResolutionManagement {
@@ -10,7 +20,18 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        maven {
+            url 'https://maven.pkg.github.com/phongcoiydbg99/jetpack-compose-demo'
+            credentials {
+                username = "phongcoiydbg99"
+                password = "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"
+            }
+        }
+
+        maven { url "https://jitpack.io" }
     }
 }
 rootProject.name = "First Jen"
 include ':app'
+include ':firstJet'

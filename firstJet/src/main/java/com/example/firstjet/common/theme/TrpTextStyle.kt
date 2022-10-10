@@ -1,101 +1,105 @@
-package com.example.firstjen.ui.mytour
+package com.example.firstjet.common.theme
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import com.example.firstjet.common.theme.TrpFontFamily
+import com.example.firstjet.common.theme.TrpFontSize
 import com.example.firstjet.common.theme.TrpLetterSpacing
-import com.example.firstjet.common.theme.TrpTextStyle
 
-class MytourTextStyle(fontFamily: FontFamily, fontSize: MytourFontSize) : TrpTextStyle(fontFamily, fontSize) {
+open class TrpTextStyle constructor(
+    fontFamily: FontFamily = TrpFontFamily,
+    fontSize: TrpFontSize = TrpFontSize()
+) {
 
-    override val trpTextStyleH1: TextStyle = TextStyle(
+    open val trpTextStyleH1: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.h1,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleH2: TextStyle = TextStyle(
+    open val trpTextStyleH2: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.h2,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleH3: TextStyle = TextStyle(
+    open val trpTextStyleH3: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.h3,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleH4: TextStyle = TextStyle(
+    open val trpTextStyleH4: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.h4,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleH5: TextStyle = TextStyle(
+    open val trpTextStyleH5: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.h5,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleH6: TextStyle = TextStyle(
+    open val trpTextStyleH6: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.h6,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleSub1: TextStyle = TextStyle(
+    open val trpTextStyleSub1: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.sub1,
         fontWeight = FontWeight.SemiBold,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleSub2: TextStyle = TextStyle(
+    open val trpTextStyleSub2: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.sub2,
         fontWeight = FontWeight.SemiBold,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleBody1: TextStyle = TextStyle(
+    open val trpTextStyleBody1: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.body1,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleBody2: TextStyle = TextStyle(
+    open val trpTextStyleBody2: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.body2,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleButton: TextStyle = TextStyle(
+    open val trpTextStyleButton: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.button,
         fontWeight = FontWeight.Normal,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleCaption: TextStyle = TextStyle(
+    open val trpTextStyleCaption: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.caption,
         fontWeight = FontWeight.Light,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 
-    override val trpTextStyleOverline: TextStyle = TextStyle(
+    open val trpTextStyleOverline: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontSize = fontSize.overline,
         fontWeight = FontWeight.Light,
-        letterSpacing = TrpLetterSpacing.medium
+        letterSpacing = TrpLetterSpacing.default
     )
 }

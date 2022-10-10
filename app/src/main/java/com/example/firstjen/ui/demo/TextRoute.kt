@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import com.example.firstjen.R
 import com.example.firstjen.navigation.JenAppState
 import com.example.firstjen.navigation.JenRoute
-import com.example.firstjen.ui.common.theme.TrpColor
-import com.example.firstjen.ui.common.theme.TrpTheme
-import com.example.firstjen.ui.common.ui.TrpText
+import com.example.firstjet.common.theme.TrpColor
+import com.example.firstjet.common.theme.TrpTheme
+import com.example.firstjet.common.ui.TrpText
 
 @Composable
 fun TextRoute(state: JenAppState) {

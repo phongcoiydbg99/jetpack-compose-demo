@@ -1,11 +1,8 @@
 package com.example.firstjen.ui.theme
 
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import com.example.firstjen.ui.common.theme.BaseTheme
-import com.example.firstjen.ui.common.theme.TrpColors
-import com.example.firstjen.ui.common.theme.TrpFontSize
-import com.example.firstjen.ui.common.theme.TrpTextStyle
+import com.example.firstjet.common.theme.BaseTheme
+import com.example.firstjet.common.theme.TrpColors
 
 class PartnerTheme : BaseTheme() {
     override val lightColors = TrpColors.lightColors(

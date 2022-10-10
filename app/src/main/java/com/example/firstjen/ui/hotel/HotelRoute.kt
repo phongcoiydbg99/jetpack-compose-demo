@@ -16,9 +16,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.firstjen.navigation.JenAppState
 import com.example.firstjen.navigation.JenRoute
-import com.example.firstjen.ui.common.theme.TrpColor
-import com.example.firstjen.ui.common.theme.TrpTheme
-import com.example.firstjen.ui.common.ui.*
+import com.example.firstjet.common.theme.TrpColor
+import com.example.firstjet.common.theme.TrpTheme
+import com.example.firstjet.common.ui.*
 
 
 @Composable

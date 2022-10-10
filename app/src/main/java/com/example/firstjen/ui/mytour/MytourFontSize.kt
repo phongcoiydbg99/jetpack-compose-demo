@@ -2,7 +2,7 @@ package com.example.firstjen.ui.mytour
 
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import com.example.firstjen.ui.common.theme.TrpFontSize
+import com.example.firstjet.common.theme.TrpFontSize
 
 
 class MytourFontSize : TrpFontSize() {
