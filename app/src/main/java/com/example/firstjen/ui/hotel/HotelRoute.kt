@@ -1,12 +1,10 @@
 package com.example.firstjen.ui.hotel
 
 import androidx.activity.ComponentActivity
-import androidx.compose.animation.animateColor
-import androidx.compose.animation.core.*
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -14,7 +12,6 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.firstjen.navigation.JenAppState
@@ -175,7 +172,8 @@ fun HotelScreen(state: JenAppState) {
             )
         }, colors = TextFieldDefaults.textFieldColors(
             backgroundColor = TrpTheme.colors.surface
-        ) )
+        )
+        )
 
         OutlinedTextField(
             value = text, modifier = Modifier.padding(8.dp),
@@ -197,6 +195,20 @@ fun HotelScreen(state: JenAppState) {
 
         Checkbox(checked = true, onCheckedChange = {})
         Checkbox(checked = false, onCheckedChange = {})
+
+        TrpCard(
+            modifier = Modifier,
+            backgroundColor = TrpColor.pink,
+            radius = TrpRadius.toRadius(20.dp, 20.dp, 20.dp, 20.dp),
+            border = BorderStroke(4.dp, TrpColor.neutral_400),
+            elevation = 50.dp
+        ) {
+            TrpText(
+                text = "Demo",
+                modifier = Modifier.padding(start = 32.dp, top = 64.dp, end = 32.dp, bottom = 64.dp)
+            )
+        }
+
     }
 }
 
