@@ -5,7 +5,7 @@ plugins {
 }
 
 def getVersionName = { ->
-    return "1.0.3"
+    return "1.0.4"
 }
 
 def getArtificialId = { ->
@@ -75,71 +75,57 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 }
 
-//publishing {
-//    Properties githubProperties = new Properties()
-//    githubProperties.load(new FileInputStream(rootProject.file("local.properties")))
-//
-//    publications {
-//        android.libraryVariants.all { variant ->
-//            // Only consider release
-//            if (variant.buildType.name != "release") { return }
-//            //use this kind of combination if you want to skip a publication
-//            //if (variant.flavorName == "production" && variant.buildType.name == "debug") return
-//            //if (variant.flavorName != "production" && variant.buildType.name == "release") return
-//            def filename = "${archivesBaseName}-${variant.name}-${getVersionName()}"
-//            println("-------------------------------" + filename)
-//            "${variant.name}"(MavenPublication) {
-//                //println(variant.name)
-//                groupId 'com.phongcoiydbg99.android'
-//                artifactId = "${getArtificialId()}"
-//                version = "${getVersionName()}"
-//                artifact file("$buildDir/outputs/aar/${filename}.aar")
-//                pom.withXml {
-//                    // for dependencies and exclusions
-//                    def dependenciesNode = asNode().appendNode('dependencies')
-//                    def configurationNames = ["implementation", "api", "runtimeOnly"]
-//                    configurationNames.each { confName ->
-//                        configurations[confName].allDependencies.each {
-//                            def dependencyNode = dependenciesNode.appendNode('dependency')
-//                            dependencyNode.appendNode('groupId', it.group)
-//                            dependencyNode.appendNode('artifactId', it.name)
-//                            dependencyNode.appendNode('version', it.version)
-//                            if (it.excludeRules.size() > 0) {
-//                                def exclusionsNode = dependencyNode.appendNode('exclusions')
-//                                it.excludeRules.each { rule ->
-//                                    def exclusionNode = exclusionsNode.appendNode('exclusion')
-//                                    exclusionNode.appendNode('groupId', rule.group)
-//                                    exclusionNode.appendNode('artifactId', rule.module)
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    repositories {
-//        maven {
-//            name = "GitHubPackages"
-//            url = uri(githubProperties['gpr.uri'])
-//            credentials {
-//                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
-//                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
-//            }
-//        }
-//    }
-//}
+publishing {
+    Properties githubProperties = new Properties()
+    githubProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
+    publications {
+        android.libraryVariants.all { variant ->
+            // Only consider release
+            if (variant.buildType.name != "release") { return }
+            //use this kind of combination if you want to skip a publication
+            //if (variant.flavorName == "production" && variant.buildType.name == "debug") return
+            //if (variant.flavorName != "production" && variant.buildType.name == "release") return
+            def filename = "${archivesBaseName}-${variant.name}-${getVersionName()}"
+            println("-------------------------------" + filename)
+            "${variant.name}"(MavenPublication) {
+                //println(variant.name)
+                groupId 'com.phongcoiydbg99.android'
+                artifactId = "${getArtificialId()}"
+                version = "${getVersionName()}"
+                artifact file("$buildDir/outputs/aar/${filename}.aar")
+                pom.withXml {
+                    // for dependencies and exclusions
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    def configurationNames = ["implementation", "api", "runtimeOnly"]
+                    configurationNames.each { confName ->
+                        configurations[confName].allDependencies.each {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                            if (it.excludeRules.size() > 0) {
+                                def exclusionsNode = dependencyNode.appendNode('exclusions')
+                                it.excludeRules.each { rule ->
+                                    def exclusionNode = exclusionsNode.appendNode('exclusion')
+                                    exclusionNode.appendNode('groupId', rule.group)
+                                    exclusionNode.appendNode('artifactId', rule.module)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-                groupId = 'com.github.phongcoiydbg99'
-                artifactId = 'firstjet'
-                version = '1.0.5'
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri(githubProperties['gpr.uri'])
+            credentials {
+                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
             }
         }
     }
