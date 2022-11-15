@@ -8,7 +8,7 @@ pluginManagement {
             url 'https://maven.pkg.github.com/phongcoiydbg99/jetpack-compose-demo'
             credentials {
                 username = "phongcoiydbg99"
-                password = "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"
+                password = "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"
             }
         }
 
@@ -25,7 +25,7 @@ dependencyResolutionManagement {
             url 'https://maven.pkg.github.com/phongcoiydbg99/jetpack-compose-demo'
             credentials {
                 username = "phongcoiydbg99"
-                password = "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"
+                password = "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"
             }
         }
 

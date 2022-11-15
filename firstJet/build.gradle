@@ -5,7 +5,7 @@ plugins {
 }
 
 def getVersionName = { ->
-    return "1.0.6"
+    return "1.0.7"
 }
 
 def getArtificialId = { ->
@@ -124,7 +124,7 @@ afterEvaluate {
 
         repositories {
             maven {
-                name = "GitHubPackages"
+                name = "jetpack-compose-demo"
                 url = uri(githubProperties['gpr.uri'])
                 credentials {
                     username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
