@@ -47,9 +47,10 @@ android {
 
 dependencies {
 
-//    implementation project(':firstJet')
+    implementation project(':firstJet')
 //    implementation 'com.phongcoiydbg99.android:firstjet:1.0.4'
-    implementation 'com.github.phongcoiydbg99:jetpack-compose-demo:v1.0.2'
+//    implementation 'com.github.phongcoiydbg99:jetpack-compose-demo:v1.0.2'
+    implementation 'com.github.phongcoiydbg99:jetpack-compose-demo:1.0.8'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "androidx.compose.ui:ui:$compose_version"
