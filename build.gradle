@@ -3,6 +3,9 @@ buildscript {
         compose_version = '1.1.0-beta01'
         kotlin_version = '1.5.31'
         bpk_version = '40.2.1'
+        roomVersion = '2.4.2'
+        hiltAndroidXVersion = '1.0.0'
+        hiltVersion = '2.42'
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {

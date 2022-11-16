@@ -6,7 +6,9 @@ import android.widget.Button
 import androidx.activity.ComponentActivity
 import com.example.firstjen.ui.mytour.MytourActivity
 import com.example.firstjen.ui.partner.PartnerActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +21,9 @@ class MainActivity : ComponentActivity() {
             startActivity(Intent(this, MytourActivity::class.java))
         }
         findViewById<Button>(R.id.btn3).setOnClickListener {
+            startActivity(Intent(this, PartnerActivity::class.java))
+        }
+        findViewById<Button>(R.id.btn4).setOnClickListener {
             startActivity(Intent(this, PartnerActivity::class.java))
         }
     }

@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -49,7 +52,6 @@ dependencies {
 
 //    implementation project(':firstJet')
     implementation 'com.phongcoiydbg99.android:firstjet:1.0.7'
-//    implementation 'com.github.phongcoiydbg99:jetpack-compose-demo:v1.0.3'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "androidx.compose.ui:ui:$compose_version"
@@ -59,6 +61,9 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.3.1'
     implementation 'androidx.navigation:navigation-compose:2.5.1'
     implementation 'androidx.navigation:navigation-runtime-ktx:2.5.1'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -67,5 +72,15 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
-//    implementation "net.skyscanner.backpack:backpack-compose:$bpk_version" // for Compose
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    implementation "androidx.hilt:hilt-navigation-compose:$hiltAndroidXVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
 }

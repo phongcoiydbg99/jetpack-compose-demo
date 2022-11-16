@@ -15,6 +15,13 @@
         android:theme="@style/Theme.FirstJen"
         tools:targetApi="31">
         <activity
+            android:name=".PokemonActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
@@ -25,15 +32,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.mytour.MytourActivity"
+        <activity
+            android:name=".ui.mytour.MytourActivity"
             android:exported="true"
-            android:theme="@style/Theme.FirstJen"/>
-        <activity android:name=".ui.partner.PartnerActivity"
+            android:theme="@style/Theme.FirstJen" />
+        <activity
+            android:name=".ui.partner.PartnerActivity"
             android:exported="true"
-            android:theme="@style/Theme.FirstJen"/>
-        <activity android:name=".CommonActivity"
+            android:theme="@style/Theme.FirstJen" />
+        <activity
+            android:name=".CommonActivity"
             android:exported="true"
-            android:theme="@style/Theme.FirstJen"/>
+            android:theme="@style/Theme.FirstJen" />
     </application>
 
 </manifest>
